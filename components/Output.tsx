@@ -1,7 +1,7 @@
-import { ISection } from '../pages'
+import type { ISection, ISectionState } from '../pages'
 
 interface IOutputComponentProps {
-  sections: ISection[]
+  sections: ISectionState[]
 }
 
 // const formatValue = (val: string | boolean | number){
@@ -12,13 +12,15 @@ interface IOutputComponentProps {
 // }
 
 const shouldDisplay = (
-  val: string | number | string[] | boolean | undefined
+  val: string | number | string[] | boolean | null
 ): boolean => {
   if (typeof val === 'object') {
-    if (val.hasOwnProperty('length')) {
+    if (val && val.hasOwnProperty('length')) {
       if (val.length === 0) return false
       return true
     }
+  } else if (typeof val === 'boolean') {
+    return true
   }
   return !!val
 }
@@ -32,16 +34,22 @@ const determineSectionName = (section: ISection): string => {
 }
 
 const OutputComponent: React.FC<IOutputComponentProps> = ({ sections }) => {
+  //   const sectionsArr: ISection[] = [
+  //     sections.required.global,
+  //     sections.required.aws,
+  //     sections.required.cluster,
+  //   ]
   return (
-    <div className='bg-gray-400 font-mono'>
+    <div className='bg-gray-400 font-mono fixed w-1/4 overflow-y-scroll h-3/4'>
       {sections.map((section, index) => (
         <div key={`section-${section.section_name}`}>
-          <div>{determineSectionName(section)}</div>
+          <div className='lowercase'>{determineSectionName(section)}</div>
           <div>
             {Object.entries(section.fields).map(([key, val]) =>
-              shouldDisplay(val) ? (
+              shouldDisplay(val.value) ? (
                 <div key={`section-${section.section_name}-field-${key}`}>
-                  {key} = {val.toString()}
+                  <span className='lowercase'>{key}</span> ={' '}
+                  {val.value?.toString()}
                 </div>
               ) : null
             )}
