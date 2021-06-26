@@ -47,7 +47,10 @@ const Layout: React.FC = ({ children }) => {
           Michael "giraffesyo" McQuade
         </a>
         , source code available on{' '}
-        <a target='_blank' href='https://github.com/giraffesyo'>
+        <a
+          target='_blank'
+          href='https://github.com/giraffesyo/aws-pc-config-generator'
+        >
           <FaGithub className='inline hover:opacity-80'></FaGithub>
         </a>
       </div>

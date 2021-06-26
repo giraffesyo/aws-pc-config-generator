@@ -417,7 +417,29 @@ const IndexPage: React.FC = () => {
 
   return (
     <div className='container mx-auto'>
-      This tool will help you create a ParallelCluster configuration file.
+      <div className='mb-5'>
+        <h1 className='text-xl font-medium'>
+          ParallelCluster Configuration Generator
+        </h1>
+        This tool will help you create a{' '}
+        <a
+          className='text-blue-500'
+          target='_blank'
+          href='https://docs.aws.amazon.com/parallelcluster/latest/ug/what-is-aws-parallelcluster.html'
+        >
+          ParallelCluster
+        </a>{' '}
+        configuration file. It doesn't prevent you from entering disallowed
+        values, so it's suggested to refer to the{' '}
+        <a
+          className='text-blue-500'
+          href='https://docs.aws.amazon.com/parallelcluster/latest/ug/configuration.html'
+          target='_blank'
+        >
+          documentation
+        </a>{' '}
+        while filling this out.
+      </div>
       <div className='flex flex-row'>
         <div className='w-full'>
           <ConfigForm
