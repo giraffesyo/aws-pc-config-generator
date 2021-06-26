@@ -75,7 +75,7 @@ const Input: React.FC<IInputProps> = ({
     return (
       <input
         id={id}
-        className='focus:ring-indigo-500 focus:border-indigo-500 w-1/12 text-right self-end  rounded-none rounded-r-md sm:text-sm border-gray-300'
+        className='focus:ring-indigo-500 focus:border-indigo-500 w-3/12 text-right self-end  rounded-none rounded-r-md sm:text-sm border-gray-300'
         value={field.value as number}
         type='number'
         data-section={sectionIndex}
